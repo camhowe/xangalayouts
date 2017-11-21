@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--- base code by neo! (chorister)
+          xanga base theme by rae (mylifeonstandby) --->
+
+    <!-- DEFAULTS -->
+    <!-- Site Identity-->
+    <meta name="if:Show Xanga Not Tumblr" content="1" />
+    <meta name="text:Site Title" content="This is your title" />
+    <meta name="text:Site Subtitle" content="This is your subtitle" />
+    <meta name="image:Background" content="" />
+    <meta name="image:Header" content="{HeaderImage}" />
+
+    <!-- DEFAULT FONTS -->
+    <meta name="font:Title" content="Arial, sans-serif" />
+    <meta name="font:Body" content="Arial, sans-serif" />
+    <meta name="font:Links" content="Arial, sans-serif" />
+
+    <!-- Sidebar Options -->
+    <meta name="text:Profile URL" content="Your Profile URL" />
+    <meta name="if:Show Avatar" content=0/>
+    <meta name="if:Show Header Image" content=0/>
+    <meta name="if:Show Header Text" content=1/>
+
+    <meta name="if:Show Name" content="1">
+    <meta name="text:Name" content="Your Name" />
+    <meta name="if:Show Country" content="1" />
+    <meta name="text:Country" content="Your Country" />
+    <meta name="if:Show Metro" content="1" />
+    <meta name="text:Metro" content="Your Metro" />
+    <meta name="if:Show Birthday" content="1" />
+    <meta name="text:Birthday" content="Your Birthday" />
+    <meta name="if:Show Gender" content="1" />
+    <meta name="text:Gender" content="Your Gender" />
+
+    <meta name="if:Show Interests" content="1" />
+    <meta name="text:Interests" content="Your Interests" />
+
+    <meta name="if:Show Occupation" content="1" />
+    <meta name="text:Occupation" content="Your Occupation" />
+
+    <meta name="if:Show Website" content="1" />
+    <meta name="text:Website URL" content="" />
+
+    <meta name="if:Show Member Since" content="1" />
+    <meta name="text:Member Since" content="Your Join Date Here" />
+
+    <meta name="if:Show Subscriptions" content="1" />
+
+    <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}"> {block:Description}
+    <meta name="description" content="{MetaDescription}" /> {/block:Description}
+
+
+    <style type="text/css">
+        body {
+            font-family: {font:Body};
+            font-size: 12pt;
+            color: {TitleColor};
+            background-color: {BackgroundColor};
+            background: {BackgroundColor}
+            url('{image:Background}');
+            word-wrap: break-word;
+        }
+
+        a {
+            color: {AccentColor};
+            transition: 0.5s;
+            text-decoration: none;
+            font-family: {font:Links};
+        }
+
+        a:hover {
+            color: {TitleColor};
+            transition: 0.5s;
+        }
+
+        .media {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        select,
+        input[type="color" i][list] {
+            background-color: {BackgroundColor};
+            border-width: 5px;
+            border-style: solid;
+            color: {TitleColor};
+            border-color: {AccentColor};
+        }
+
+        button,
+        input[type="button"] {
+            background-color: {BackgroundColor};
+            border-width: 5px;
+            border-style: solid;
+            color: {TitleColor};
+            border-color: {AccentColor};
+        }
+
+        .post {
+            background-color: {BackgroundColor};
+        }
+
+        .post .question {
+            font-weight: bold;
+        }
+
+        .post .question .bubble {
+            width: 13px;
+            height: 7px;
+            background: {BackgroundColor}
+            url('http://static.tumblr.com/vr9xgox/PDjnf8t10/ask-mask.png');
+            position: relative;
+            bottom: -7px;
+        }
+
+        .asker {
+            margin-top: 7px;
+        }
+
+        #wrapper {
+            width: 800px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #sidebar {
+            width: 250px;
+            float: left;
+            margin: auto;
+        }
+
+        #sidebar .module {
+            border: 5px solid {AccentColor};
+            margin-top:20px;
+            background-color: {BackgroundColor};
+        }
+
+        #sidebar .header {
+            border: 5px solid {AccentColor};
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .header {
+            border: 5px solid {AccentColor};
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .content {
+            margin: 5px;
+        }
+
+        #sidebar .blogtitle {
+            text-align: center;
+            font-size: 125%;
+            font-weight: bold;
+        }
+
+        #sidebar .sideimg img,
+        .media img {
+            max-width: 100%;
+            margin: auto;
+            display: block;
+        }
+
+        #header {
+            text-align: center;
+        }
+
+        #header .headerTitle {
+            font-size: 200%;
+            font-family: {font:Title};
+        }
+
+        #header .subTitle {
+            font-size: 150%;
+            font-family: {font: Body};
+        }
+
+        #header .links {
+            font-size: 75%;
+        }
+
+        #header #blog {
+            float: left;
+        }
+
+        #header #xanga {
+            float: right;
+        }
+
+        #container {
+            width: 100%;
+            overflow: auto;
+            padding-bottom: 60px;
+        }
+
+        #content {
+            float: right;
+        }
+
+        #footer {
+            font-size: 75%;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            margin-top: -60px;
+            height: 60px;
+            clear: both;
+        }
+
+        #postingCalendar .content {
+            text-align: center;
+        }
+
+        .chatlabel {
+            font-weight: bold;
+        }
+
+        .odd {
+            color: {TitleColor};
+        }
+
+        .even {
+            color: {AccentColor};
+        }
+
+        .quote {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .quote.long {
+            font-size: 110%;
+        }
+
+        .quote.medium {
+            font-size: 125%;
+        }
+
+        .quote.short {
+            font-size: 150%;
+        }
+
+        .post,
+        .navigation {
+            margin: 20px auto;
+            border: 5px solid {AccentColor};
+            width: 500px;
+        }
+
+        .navigation {
+            text-align: center;
+        }
+
+        .link,
+        .post .title {
+            font-size: 125%;
+            font-weight: bold;
+        }
+
+
+        ol.notes {
+            padding: 0px;
+            margin: 25px 0px;
+            list-style-type: none;
+            border-bottom: 5px solid {AccentColor};
+        }
+
+        ol.notes li.note {
+            border-top: 5px solid {AccentColor};
+            padding: 10px;
+        }
+
+        ol.notes li.note img.avatar {
+            vertical-align: -4px;
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+        }
+
+        ol.notes li.note blockquote {
+            border-color: {AccentColor};
+            padding: 4px 10px;
+            margin: 10px 0px 0px 25px;
+        }
+
+        ol.notes li.note blockquote a {
+            text-decoration: none;
+        }
+
+        .footer {
+            margin-top: 5px;
+            padding: 5px;
+        }
+
+        .links {
+            text-align: center;
+        }
+
+        .txt blockquote {
+            border-left: 2px solid {AccentColor};
+            padding-left: 15px;
+            margin-top: -5px;
+            margin-left: 5px;
+        }
+
+        .tumblr_audio_player {
+            width: 500px;
+            height: 85px;
+        }
+
+            {CustomCSS}
+    </style>
+
+    <script>window.onload = function () {
+            var url = document.getElementById("blogURLLink").getAttribute("href");
+            var splitHttps = url.split("//");
+
+            var splitText = splitHttps[1].split(".")[0];
+            //when the document is finished loading, replace everything
+            //between the <a ...> </a> tags with the value of splitText
+            document.getElementById("blogURLLink").innerHTML = splitText;
+            document.getElementById("url").innerHTML = splitText;
+            document.getElementById("follow").href = "http://www.tumblr.com/follow/" + splitText;
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            {block:IfShowHeaderImage} {block:IfHeaderImage}
+            <img src="{image:Header}" />{/block:IfHeaderImage} {/block:IfShowHeaderImage} {block:IfShowHeaderText}
+            <div class="headerTitle">{text:Site Title}</div>
+            <div class="subTitle">{text:Site Subtitle}</div>
+            {/block:IfShowHeaderText}
+            <div class="links">
+                <div id="blog">
+                    <a id="blogURLLink" href="{BlogURL}">URL</a>:
+                    <a href="{BlogURL}">weblog</a>
+                    -
+                    <a href="{BlogURL}archive/filter-by/photo">photos</a>
+                    -
+                    <a href="{BlogURL}archive/filter-by/video">videos</a>
+                    -
+                    <a href="{BlogURL}archive/filter-by/audio">audio</a>
+                    -
+                    <a href="{BlogURL}archive/filter-by/text">pulse</a>
+                    - 
+                    <a href="{text:Profile URL}">profile</a>
+                    -
+                    <a id="follow" href="http://www.tumblr.com/follow/username">subscribe! </a>
+                </div>
+                <div id="xanga">
+                    <a href="{BlogURL}#">ratings</a>
+                    -
+                    <a href="{BlogURL}#">flag </a>
+                    [ {block:IfShowXangaNotTumblr}
+                    <a href="https://www.xanga.com">xanga</a>{/block:IfShowXangaNotTumblr} {block:IfNotShowXangaNotTumblr}
+                    <a href="https://www.tumblr.com">tumblr</a>{/block:IfNotShowXangaNotTumblr} -
+                    <a href="https://www.tumblr.com/login">join </a>
+                    -
+                    <a href="https://www.tumblr.com/login">sign in </a> ]
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div id="sidebar">
+                <div id="profile" class="module">
+                    <div id="url" class="header">URL</div>
+                    <div class="content">
+                            <a href="{text:Profile URL}">read my profile</a>
+
+                        
+                        <div id="guestbook">
+                            {block:SubmissionsEnabled}
+                            <a href="/submit">sign my guestbook</a>
+                            {/block:SubmissionsEnabled}</div>
+
+
+
+                        <div class="sideimg">
+                            <a href="/">
+                                <img src="{PortraitURL-128}">
+                            </a>
+                        </div>
+                        <div id="description">
+                            {block:IfShowName}
+                            <b>Name: </b>{text:Name}
+                            <br/>{/block:ifShowName} {block:IfShowCountry}
+                            <b>Country: </b>{text:Country}
+                            <br/>{/block:IfShowCountry} {block:IfShowMetro}
+                            <b>Metro: </b>{text:Metro}
+                            <br/>{/block:ifShowMetro} {block:IfShowBirthday}
+                            <b>Birthday: </b>{text:Birthday}
+                            <br/>{/block:IfShowBirthday} {block:IfShowGender}
+                            <b>Gender: </b>{text:Gender}
+                            <br/>{/block:IfShowGender}
+                            <br/> {block:IfShowInterests}
+
+                            <b>Interests: </b>{text:Interests}
+                            <br/>{/block:IfShowInterests} {block:IfShowOccupation}
+                            <b>Occupation: </b>{text:Occupation}
+                            <br/>{/block:IfShowOccupation}
+                            <br/> {block:AskEnabled}
+                            <b>Message: </b>
+                            <a href="/ask">message me</a>
+                            <br/> {/block:AskEnabled} {block:IfShowWebsite}
+                            <b>Website: </b>
+                            <a href="{text:Website URL}">visit my website</a>
+                            <br/>{/block:IfShowWebsite}
+                            <br/> {block:IfShowMemberSince}Member since: {text:Member Since}{/block:IfShowMemberSince}
+                        </div>
+                    </div>
+                </div>
+                {block:IfShowSubscriptions}
+                <div id="subscriptions" class="module">
+                    <div class="header">Subscriptions</div>
+                    <div class="content">
+                        {block:Following}
+                        <ul>{block:Followed}
+                            <li>
+                                <a href="{FollowedURL}">{FollowedName}</a>
+                            </li>{/block:Followed}
+                        </ul>{/block:Following}
+                    </div>
+                </div>
+                {/block:IfShowSubscriptions} {block:HasPages}
+                <div id="blogrings" class="module">
+                    <div class="header">Blogrings</div>
+                    <div class="content">{block:Pages}
+                        <a href="{URL}">{Label}</a>
+                        {/block:Pages}</div>
+                </div>
+                {/block:HasPages}
+                <div id="postingCalendar" class="module">
+                    <div class="header">Posting Calendar</div>
+                    <div class="content">
+                        <td valign="top" class="left" align="center">
+                            <select name="PostCalendar$ddlMonth" id="PostCalendar_ddlMonth">
+                                <option value="01">Jan</option>
+                                <option value="02">Feb</option>
+                                <option value="03">Mar</option>
+                                <option value="04">Apr</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">Aug</option>
+                                <option value="09">Sept</option>
+                                <option value="10">Oct</option>
+                                <option selected="selected" value="11">Nov</option>
+                                <option value="12">Dec</option>
+
+                            </select>
+                            <select name="PostCalendar$ddlDay" id="PostCalendar_ddlDay">
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option selected="selected" value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+
+                            </select>
+                            <select name="PostCalendar$ddlYear" id="PostCalendar_ddlYear">
+                                <option selected="selected" value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+
+                            </select>
+                            <br>
+                            <input name="PostCalendar$ctl00" type="button" value="Go!" class="button" onclick="window.location.href='{BlogURL}day/'+document.getElementById('PostCalendar_ddlYear').value+'/'+document.getElementById('PostCalendar_ddlMonth').value+'/'+document.getElementById('PostCalendar_ddlDay').value+'/'">
+                        </td>
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                {block:Posts}
+                <div class="post">
+                    {block:Photo}
+                    <div class="media">
+                        {LinkOpenTag}
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" /> {LinkCloseTag}
+                    </div>
+                    <div class="content">
+
+                        {block:Caption}
+                        <div class="txt">{Caption}</div>
+                        {/block:Caption}
+                    </div>
+                    {/block:Photo} {block:Panorama}
+                    <div class="media">
+                        {LinkOpenTag}
+                        <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" /> {LinkCloseTag}
+                    </div>
+                    <div class="content">
+
+                        {block:Caption}
+                        <div class="txt">{Caption}</div>
+                        {/block:Caption} </div>
+                    {/block:Panorama} {block:Text} {block:Date}
+                    <div class="header">
+                        {DayOfWeek},{Month} {DayOfMonth}, {Year}
+                    </div>
+                    {/block:Date}
+                    <div class="content">
+
+                        {block:Title}
+
+                        <div class="title">{Title}</div>
+                        {/block:Title}
+                        <div class="txt">{Body}</div>
+                    </div>
+                    {/block:Text} {block:Photoset}
+                    <div class="media">
+                        {Photoset}
+                    </div>
+                    <div class="content">
+
+                        {block:Caption}
+                        <div class="txt">{Caption}</div>
+                        {/block:Caption}
+                    </div>
+                    {/block:Photoset} {block:Chat}
+                    <div class="content">
+
+                        {block:Title}
+                        <div class="title">{Title}</div>
+                        {/block:Title} {block:Lines}
+                        <div class="{Alt}">
+                            {block:Label}
+                            <span class="chatlabel">{Label}</span>
+                            {/block:Label} &nbsp;{Line}
+                        </div>
+                        {/block:Lines}
+                    </div>
+                    {/block:Chat} {block:Quote}
+                    <div class="content">
+
+                        <div class="quote {Length}">{Quote}</div>
+                        {block:Source}
+                        <div class="quotesrc">&mdash;{Source}</div>
+                        {/block:Source}</div>
+                    {/block:Quote} {block:Answer}
+                    <div class="content">
+
+                        <div class="question">
+                            {Question}
+                            <div class="bubble"></div>
+                        </div>
+                        <div class="asker">
+                            <img src="{AskerPortraitURL-24}"> {Asker}</div>
+                        <div class="txt">{Answer}</div>
+                    </div>
+                    {/block:Answer} {block:Link}
+                    <div class="content">
+
+                        <div class="link">
+                            <a href="{URL}" {Target}>{Name}</a>
+                        </div>
+                        {block:Description}
+                        <div class="txt">{Description}</div>
+                        {/block:Description} </div>
+                    {/block:Link} {block:Audio} {block:AudioEmbed}
+                    <div class="media">
+                        {AudioEmbed}
+                    </div>
+                    {/block:AudioEmbed}
+                    <div class="content">
+
+                        <div class="txt">{Caption}</div>
+                    </div>
+                    {/block:Audio} {block:Video}
+                    <div class="media">{Video-500}</div>
+                    <div class="content">
+
+                        {block:Caption}
+                        <div class="txt">{Caption}</div>
+                        {/block:Caption} </div>
+                    {/block:Video} {block:Date}
+
+                    <div class="footer">
+                        {block:IndexPage} {block:RebloggedFrom}{block:IndexPage}&bullet;{/block:IndexPage} via:
+                        <a href="{ReblogParentURL}">{ReblogParentName}</a>{/block:RebloggedFrom} {block:ContentSource}{block:RebloggedFrom}&bullet;{/block:RebloggedFrom}
+                        source:
+                        <a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource}{block:IndexPage}
+                        <br>{/block:IndexPage}{block:PermalinkPage}{block:RebloggedFrom}
+                        <br>{/block:RebloggedFrom}{/block:PermalinkPage} {12Hour}:{Minutes} {CapitalAmPm} - {NoteCount} eprops
+                        -
+                        <a href="{Permalink}">link</a>{/block:IndexPage}{block:HasTags}
+                        <br>{block:Tags}#
+                        <a href="{TagURL}">{Tag}</a> {/block:Tags}{/block:HasTags}
+                    </div>
+                    {/block:Date} {PostNotes}
+                </div>
+                {/block:Posts} {block:Pagination}
+                <div class="navigation">
+                    {block:PreviousPage}
+                    <a href="{PreviousPage}">Previous</a>{/block:PreviousPage} {block:NextPage}
+                    <a href="{NextPage}">Next</a>{/block:NextPage}
+                </div>
+                {/block:Pagination}
+            </div>
+        </div>
+        <div id="footer">
+            <div>{block:IfShowXangaNotTumblr}
+                <a href="https://www.xanga.com">xanga</a>{/block:IfShowXangaNotTumblr} {block:IfNotShowXangaNotTumblr}
+                <a href="https://www.tumblr.com">tumblr</a>{/block:IfNotShowXangaNotTumblr} -
+                <a href="https://www.tumblr.com/dashboard">your site </a>
+                -
+                <a href="https://www.tumblr.com/policy/en/terms-of-service">terms</a>
+                -
+                <a href="https://www.tumblr.com/policy/en/privacy">privacy</a>
+                -
+                <a href="https://www.tumblr.com/jobs">jobs</a>
+                -
+                <a href="https://tumblr.zendesk.com/hc/en-us">help</a>
+                -
+                <a href="https://www.tumblr.com/press">press</a>
+                -
+                <a href="https://www.tumblr.com/login">join</a>
+                -
+                <a href="https://www.tumblr.com/settings/account">Language</a>
+            </div>
+            <div>
+                <div>{block:IfShowXangaNotTumblr}
+                    <a href="https://www.tumblr.com/policy/en/community">xanga safety</a>{/block:IfShowXangaNotTumblr} {block:IfNotShowXangaNotTumblr}
+                    <a href="https://www.tumblr.com/policy/en/community">tumblr safety</a>{/block:IfNotShowXangaNotTumblr} -
+                    <a href="https://www.tumblr.com/policy/en/community">parents </a>
+                    -
+                    <a href="https://www.tumblr.com/policy/en/community">law enforcement</a>
+                </div>
+                <div>
+                    <a href="https://www.tumblr.com/abuse">report inappropriate content</a>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
