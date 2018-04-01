@@ -9,10 +9,16 @@
     <!-- DEFAULTS -->
     <!-- Site Identity-->
     <meta name="if:Show Xanga Not Tumblr" content="1" />
-    <meta name="text:Site Title" content="This is your title" />
-    <meta name="text:Site Subtitle" content="This is your subtitle" />
+    <meta name="if:Show Xanga Profile" content="0" />  
+    
+    <meta name="if:Show Custom Header Text" content=0/>
+    <meta name="text:Custom Site Title" content="This is your title" />
+    <meta name="text:Custom Site Subtitle" content="This is your subtitle" />
     <meta name="image:Background" content="" />
+    <meta name="if:Show Header Image" content=0/>
     <meta name="image:Header" content="{HeaderImage}" />
+    <meta name="if:Center Blog On Page" content=0/>
+
 
     <!-- DEFAULT FONTS -->
     <meta name="font:Title" content="Arial, sans-serif" />
@@ -21,9 +27,7 @@
 
     <!-- Sidebar Options -->
     <meta name="text:Profile URL" content="Your Profile URL" />
-    <meta name="if:Show Avatar" content=0/>
-    <meta name="if:Show Header Image" content=0/>
-    <meta name="if:Show Header Text" content=1/>
+    <meta name="if:Show Avatar" content=1/>
 
     <meta name="if:Show Name" content="1">
     <meta name="text:Name" content="Your Name" />
@@ -48,7 +52,7 @@
     <meta name="if:Show Member Since" content="1" />
     <meta name="text:Member Since" content="Your Join Date Here" />
 
-    <meta name="if:Show Subscriptions" content="1" />
+    <meta name="if:Show Subscriptions" content="0" />
 
     <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}</title>
     <link rel="shortcut icon" href="{Favicon}">
@@ -131,6 +135,9 @@
             width: 800px;
             padding-left: 20px;
             padding-right: 20px;
+            {block:IfCenterBlogOnPage}
+            margin:auto;
+            {/block:IfCenterBlogOnPage}
         }
 
         #sidebar {
@@ -344,10 +351,13 @@
     <div id="wrapper">
         <div id="header">
             {block:IfShowHeaderImage} {block:IfHeaderImage}
-            <img src="{image:Header}" />{/block:IfHeaderImage} {/block:IfShowHeaderImage} {block:IfShowHeaderText}
-            <div class="headerTitle">{text:Site Title}</div>
-            <div class="subTitle">{text:Site Subtitle}</div>
-            {/block:IfShowHeaderText}
+            <img src="{image:Header}" />{/block:IfHeaderImage} {/block:IfShowHeaderImage} {block:IfShowCustomHeaderText}
+            <div class="headerTitle">{text:Custom Site Title}</div>
+            <div class="subTitle">{text:Custom Site Subtitle}</div>
+            {/block:IfShowCustomHeaderText}
+            {block:IfNotShowCustomHeaderText}
+            <div class="headerTitle">{Title}</div>
+            {/block:IfNotShowCustomHeaderText}
             <div class="links">
                 <div id="blog">
                     <a id="blogURLLink" href="{BlogURL}">URL</a>:
@@ -383,48 +393,60 @@
                 <div id="profile" class="module">
                     <div id="url" class="header">URL</div>
                     <div class="content">
+                        {block:IfShowXangaProfile}
                             <a href="{text:Profile URL}">read my profile</a>
-
-                        
-                        <div id="guestbook">
+                            <div id="guestbook">
                             {block:SubmissionsEnabled}
                             <a href="/submit">sign my guestbook</a>
                             {/block:SubmissionsEnabled}</div>
+                        {/block:IfShowXangaProfile}
 
-
-
+                        {block:IfShowAvatar}
                         <div class="sideimg">
                             <a href="/">
                                 <img src="{PortraitURL-128}">
                             </a>
                         </div>
-                        <div id="description">
-                            {block:IfShowName}
-                            <b>Name: </b>{text:Name}
-                            <br/>{/block:ifShowName} {block:IfShowCountry}
-                            <b>Country: </b>{text:Country}
-                            <br/>{/block:IfShowCountry} {block:IfShowMetro}
-                            <b>Metro: </b>{text:Metro}
-                            <br/>{/block:ifShowMetro} {block:IfShowBirthday}
-                            <b>Birthday: </b>{text:Birthday}
-                            <br/>{/block:IfShowBirthday} {block:IfShowGender}
-                            <b>Gender: </b>{text:Gender}
-                            <br/>{/block:IfShowGender}
-                            <br/> {block:IfShowInterests}
-
-                            <b>Interests: </b>{text:Interests}
-                            <br/>{/block:IfShowInterests} {block:IfShowOccupation}
-                            <b>Occupation: </b>{text:Occupation}
-                            <br/>{/block:IfShowOccupation}
-                            <br/> {block:AskEnabled}
-                            <b>Message: </b>
-                            <a href="/ask">message me</a>
-                            <br/> {/block:AskEnabled} {block:IfShowWebsite}
-                            <b>Website: </b>
-                            <a href="{text:Website URL}">visit my website</a>
-                            <br/>{/block:IfShowWebsite}
-                            <br/> {block:IfShowMemberSince}Member since: {text:Member Since}{/block:IfShowMemberSince}
+                        {/block:IfShowAvatar}
+                        {block:IfShowXangaProfile}
+                        <!-- Show Xanga Profile instead of Tumblr Description -->
+                            <div id="description">
+                                {block:IfShowName}
+                                <b>Name: </b>{text:Name}
+                                <br/>{/block:ifShowName} {block:IfShowCountry}
+                                <b>Country: </b>{text:Country}
+                                <br/>{/block:IfShowCountry} {block:IfShowMetro}
+                                <b>Metro: </b>{text:Metro}
+                                <br/>{/block:ifShowMetro} {block:IfShowBirthday}
+                                <b>Birthday: </b>{text:Birthday}
+                                <br/>{/block:IfShowBirthday} {block:IfShowGender}
+                                <b>Gender: </b>{text:Gender}
+                                <br/>{/block:IfShowGender}
+                                <br/> {block:IfShowInterests}
+                                <b>Interests: </b>{text:Interests}
+                                <br/>{/block:IfShowInterests} {block:IfShowOccupation}
+                                <b>Occupation: </b>{text:Occupation}
+                                <br/>{/block:IfShowOccupation}
+                                <br/> {block:AskEnabled}
+                                <b>Message: </b>
+                                <a href="/ask">message me</a>
+                                <br/> {/block:AskEnabled} {block:IfShowWebsite}
+                                <b>Website: </b>
+                                <a href="{text:Website URL}">visit my website</a>
+                                <br/>{/block:IfShowWebsite}
+                                <br/> {block:IfShowMemberSince}Member since: {text:Member Since}{/block:IfShowMemberSince}
+                            </div>
+                        {/block:IfShowXangaProfile}
+                        {block:IfNotShowXangaProfile}
+                        <!-- Show Tumblr Description instead of Xanga Profile -->
+                        <div id="description" >
+                        <center>{Description}
+                            {block:AskEnabled}
+                              <br/> <a href="/ask">message me</a>
+                            {/block:AskEnabled}
+                        </center>
                         </div>
+                        {/block:IfNotShowXangaProfile}
                     </div>
                 </div>
                 {block:IfShowSubscriptions}
