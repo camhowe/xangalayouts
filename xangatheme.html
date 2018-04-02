@@ -12,6 +12,7 @@
     <meta name="if:Show Xanga Profile" content="0" />  
     
     <meta name="if:Show Custom Header Text" content="0"/>
+    <meta name="if:Show Border Around Header" content="0"/>
     <meta name="text:Custom Site Title" content="This is your title" />
     <meta name="text:Custom Site Subtitle" content="This is your subtitle" />
     <meta name="image:Background" content="" />
@@ -185,13 +186,19 @@
             text-align: center;
         }
 
-        #header .headerTitle {
-            font-size: 200%;
+         #header .headerTitle {
+            font-size: 250%;
             font-family: {font:Title};
+            {block:IfShowBorderAroundHeader}
+            background-color: {BackgroundColor};
+            border: 5px solid {AccentColor};
+            {/block:IfShowBorderAroundHeader};
+            padding: 5px;
+            margin: 5px 0;
         }
 
         #header .subTitle {
-            font-size: 150%;
+            font-size: 65%;
             font-family: {font: Body};
         }
 
@@ -352,8 +359,10 @@
         <div id="header">
             {block:IfShowHeaderImage} {block:IfHeaderImage}
             <img src="{image:Header}" />{/block:IfHeaderImage} {/block:IfShowHeaderImage} {block:IfShowCustomHeaderText}
-            <div class="headerTitle">{text:Custom Site Title}</div>
-            <div class="subTitle">{text:Custom Site Subtitle}</div>
+            <div class="headerTitle">{text:Custom Site Title}
+                <div class="subTitle">{text:Custom Site Subtitle}</div>
+            </div>
+            
             {/block:IfShowCustomHeaderText}
             {block:IfNotShowCustomHeaderText}
             <div class="headerTitle">{Title}</div>
